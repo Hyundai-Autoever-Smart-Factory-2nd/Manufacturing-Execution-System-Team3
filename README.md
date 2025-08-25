@@ -2,7 +2,6 @@
 
 ## 🧑‍💻 Code Convention
 
-```markdown
 ### Backend (Java - Spring Boot)
 - **패키지 네이밍**: `com.mes.module`
 - **클래스명**: PascalCase (`OrderService`, `UserController`)
