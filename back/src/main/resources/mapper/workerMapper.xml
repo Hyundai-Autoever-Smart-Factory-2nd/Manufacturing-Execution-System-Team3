@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.back.mapper.WorkerMapper">
+
+    <!-- 전체 조회 -->
+    <select id="findAll" resultType="org.example.back.model.Worker">
+        SELECT
+            worker_id,
+            worker_name
+        FROM WORKER
+        ORDER BY worker_name
+    </select>
+</mapper>
