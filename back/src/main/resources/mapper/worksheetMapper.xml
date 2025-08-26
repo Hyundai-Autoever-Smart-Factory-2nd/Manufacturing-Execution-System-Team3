@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.back.mapper.WorksheetMapper">
+
+    <select id="findAll" resultType="org.example.back.dto.WorksheetWithAllResponse">
+        SELECT
+            worksheet_id,
+            amount,
+            w.machine_id,
+            machine_name,
+            w.product_id,
+            product_name,
+            w.worker_id,
+            worker_name,
+            create_datetime
+        FROM WORKSHEET w
+        JOIN MACHINE m ON m.machine_id = w.machine_id
+        JOIN PRODUCT p ON p.product_id = w.product_id
+        JOIN WORKER  wk ON wk.worker_id = w.worker_id
+    </select>
+
+    <select id="findByMachineId" parameterType="Long" resultType="org.example.back.dto.WorksheetWithAllResponse">
+        SELECT
+        worksheet_id,
+        amount,
+        w.machine_id,
+        machine_name,
+        w.product_id,
+        product_name,
+        w.worker_id,
+        worker_name,
+        create_datetime
+        FROM WORKSHEET w
+        JOIN MACHINE m ON m.machine_id = w.machine_id
+        JOIN PRODUCT p ON p.product_id = w.product_id
+        JOIN WORKER  wk ON wk.worker_id = w.worker_id
+        WHERE w.machine_id = #{machineId}
+    </select>
+
+    <insert id="insertWorksheet" parameterType="org.example.back.model.Worksheet">
+        INSERT INTO WORKSHEET (amount, machine_id, product_id, worker_id, create_datetime)
+        VALUES (#{amount}, #{machineId}, #{productId}, #{workerId}, NOW())
+    </insert>
+
+    <update id="updateWorksheet" parameterType="org.example.back.model.Worksheet">
+        UPDATE WORKSHEET
+        SET amount = #{amount},
+            machine_id = #{machineId},
+            product_id = #{productId},
+            worker_id = #{workerId}
+        WHERE worksheet_id = #{worksheetId}
+    </update>
+</mapper>
