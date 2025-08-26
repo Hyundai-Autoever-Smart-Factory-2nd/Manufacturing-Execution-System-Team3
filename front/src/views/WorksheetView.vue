@@ -1,4 +1,6 @@
 <script setup>
+import { Label } from 'radix-vue'
+import { Input } from "@/components/ui/Input"
 import { ref } from 'vue'
 
 const worksheet = ref({
@@ -21,10 +23,12 @@ const submitForm = async () => {
 <template>
   <div class="worksheet">
     <h2>작업지시서 등록</h2>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submitForm" class="form">
       <div class="form-group">
-        <label>생산량:</label>
-        <input type="number" v-model="worksheet.amount" required>
+        <Label>생산량:</Label>
+<!--        <input type="number" v-model="worksheet.amount" required>-->
+        <Input type="email" placeholder="Email" />
+
       </div>
 
       <div class="form-group">
@@ -49,9 +53,23 @@ const submitForm = async () => {
 </template>
 
 <style scoped>
-.form-group {
-  margin-bottom: 15px;
+
+.worksheet{
+  margin: 1em 3em;
 }
+
+
+.form {
+  display: grid;
+  gap: 16px; /* 행 간격, 열 간격 */
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.form-group {
+  display: block; /* 각 그룹이 grid 칸을 직접 차지하도록 */
+}
+
 
 label {
   display: block;
