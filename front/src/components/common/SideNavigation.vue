@@ -42,8 +42,4 @@ import { RouterLink } from 'vue-router'
   background-color: #e9ecef;
 }
 
-.nav-item.router-link-active {
-  background-color: #e9ecef;
-  font-weight: bold;
-}
 </style>
