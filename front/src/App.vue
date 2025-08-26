@@ -4,6 +4,7 @@ import SideNavigation from './components/common/SideNavigation.vue'
 </script>
 
 <template>
+
   <div class="app-container">
     <AppHeader />
     <div class="main-container">
@@ -11,6 +12,7 @@ import SideNavigation from './components/common/SideNavigation.vue'
       <main class="content">
         <RouterView />
       </main>
+
     </div>
   </div>
 </template>
