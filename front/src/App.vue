@@ -6,8 +6,10 @@ import { Calendar } from '@/components/ui/calendar'
 </script>
 
 <template>
+
   <Button>Click</Button>
   <Calendar></Calendar>
+
 
   <div class="app-container">
     <AppHeader />
@@ -16,6 +18,7 @@ import { Calendar } from '@/components/ui/calendar'
       <main class="content">
         <RouterView />
       </main>
+
     </div>
   </div>
 </template>
