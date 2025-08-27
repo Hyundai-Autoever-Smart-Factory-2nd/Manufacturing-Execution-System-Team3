@@ -4,19 +4,24 @@ import SideNavigation from './components/common/SideNavigation.vue'
 </script>
 
 <template>
+  <div>
+    <template v-if="$route.meta.layout !== 'default'">
+      <AppHeader />
+      <div class="main-container">
+        <SideNavigation />
+        <main class="content">
+          <RouterView />
+        </main>
+      </div>
+    </template>
 
-
-  <div class="app-container">
-    <AppHeader />
-    <div class="main-container">
-      <SideNavigation />
-      <main class="content">
-        <RouterView />
-      </main>
-
-    </div>
+    <template v-else>
+      <!-- Header/Sidebar 없는 경우 -->
+      <RouterView />
+    </template>
   </div>
 </template>
+
 
 <style scoped>
 .app-container {

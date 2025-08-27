@@ -3,6 +3,11 @@ const handleLogout = () => {
   // 로그아웃 로직
   console.log('로그아웃')
 }
+
+const openMes = () => {
+  window.open('/mes/machine', '_blank', 'width=1200,height=800')
+}
+
 </script>
 
 <template>
@@ -10,6 +15,7 @@ const handleLogout = () => {
     <div class="logo-container">
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="50" height="50" />
       <h1>MES System</h1>
+      <button @click="openMes">Work</button>
     </div>
     <div class="header-right">
       <span>사용자명</span>
