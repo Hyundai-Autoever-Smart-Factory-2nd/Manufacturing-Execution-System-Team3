@@ -18,6 +18,9 @@ public class WorksheetService {
     public List<WorksheetWithAllResponse> findAll() { return worksheetMapper.findAll(); }
     public WorksheetWithAllResponse findByMachineId(Long id) { return worksheetMapper.findByMachineId(id); }
     public void insertWorksheet(CreateWorksheetRequest request) {
+        if (worksheetMapper.existsByWorkDateAndMachineId(request)) {
+            throw new IllegalArgumentException(request.getWorkDate() + " 에 해당 장비는 이미 작업지시서가 존재합니다.");
+        }
         Worksheet worksheet = new Worksheet();
         worksheet.setAmount(request.getAmount());
         worksheet.setWorkDate(request.getWorkDate());
