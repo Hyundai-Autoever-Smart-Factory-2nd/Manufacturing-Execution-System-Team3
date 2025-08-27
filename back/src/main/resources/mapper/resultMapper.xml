@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.back.mapper.ResultMapper">
+
+    <insert id="insertResult" parameterType="org.example.back.model.Result">
+    INSERT INTO RESULT (worksheet_id, pass_qty, fail_qty, complete_datetime)
+    VALUES (#{worksheetId}, #{passQty}, #{failQty}, NOW())
+    </insert>
+</mapper>
