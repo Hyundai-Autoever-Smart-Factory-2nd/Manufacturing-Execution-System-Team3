@@ -1,10 +1,19 @@
 package org.example.back.dto;
 
 public class CreateWorksheetRequest {
+    private int amount;
+    private String workDate;
     private Long workerId;
     private Long productId;
     private Long machineId;
-    private int amount;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     public String getWorkDate() {
         return workDate;
@@ -13,8 +22,6 @@ public class CreateWorksheetRequest {
     public void setWorkDate(String workDate) {
         this.workDate = workDate;
     }
-
-    private String workDate;
 
     public Long getWorkerId() {
         return workerId;
@@ -38,13 +45,5 @@ public class CreateWorksheetRequest {
 
     public void setMachineId(Long machineId) {
         this.machineId = machineId;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

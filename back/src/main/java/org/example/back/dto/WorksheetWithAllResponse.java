@@ -3,6 +3,7 @@ package org.example.back.dto;
 public class WorksheetWithAllResponse {
     private Long worksheetId;
     private int amount;
+    private String workDate;
     private Long productId;
     private String productName;
     private Long machineId;
@@ -25,6 +26,14 @@ public class WorksheetWithAllResponse {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getWorkDate() {
+        return workDate;
+    }
+
+    public void setWorkDate(String workDate) {
+        this.workDate = workDate;
     }
 
     public Long getProductId() {
