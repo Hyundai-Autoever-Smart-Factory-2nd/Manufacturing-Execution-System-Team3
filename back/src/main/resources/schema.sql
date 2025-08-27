@@ -23,6 +23,7 @@ CREATE TABLE `WORKER` (
 CREATE TABLE `WORKSHEET` (
     `worksheet_id` BIGINT NOT NULL AUTO_INCREMENT,
     `amount` INT NULL,
+    `work_date` DATE NOT NULL,
     `create_datetime` DATETIME NULL,
     `machine_id` BIGINT NOT NULL,
     `product_id` BIGINT NOT NULL,

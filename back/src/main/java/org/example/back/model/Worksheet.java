@@ -7,6 +7,7 @@ import org.example.back.model.Worker;
 public class Worksheet {
     private Long worksheetId;
     private int amount;
+    private String workDate;
     private Long productId;
     private Long machineId;
     private Long workerId;
@@ -58,5 +59,13 @@ public class Worksheet {
 
     public void setProductId(Long productId) {
         this.productId = productId;
+    }
+
+    public String getWorkDate() {
+        return workDate;
+    }
+
+    public void setWorkDate(String workDate) {
+        this.workDate = workDate;
     }
 }

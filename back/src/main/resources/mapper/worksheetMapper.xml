@@ -9,6 +9,7 @@
         SELECT
             worksheet_id,
             amount,
+            work_date,
             w.machine_id,
             machine_name,
             w.product_id,
@@ -24,30 +25,28 @@
 
     <select id="findByMachineId" parameterType="Long" resultType="org.example.back.dto.WorksheetWithAllResponse">
         SELECT
-        worksheet_id,
-        amount,
-        w.machine_id,
-        machine_name,
-        w.product_id,
-        product_name,
-        w.worker_id,
-        worker_name,
-        create_datetime
+            worksheet_id,
+            amount,
+            work_date,
+            w.machine_id,
+            machine_name,
+            product_id,
+            worker_id,
+            create_datetime
         FROM WORKSHEET w
         JOIN MACHINE m ON m.machine_id = w.machine_id
-        JOIN PRODUCT p ON p.product_id = w.product_id
-        JOIN WORKER  wk ON wk.worker_id = w.worker_id
         WHERE w.machine_id = #{machineId}
     </select>
 
     <insert id="insertWorksheet" parameterType="org.example.back.model.Worksheet">
-        INSERT INTO WORKSHEET (amount, machine_id, product_id, worker_id, create_datetime)
-        VALUES (#{amount}, #{machineId}, #{productId}, #{workerId}, NOW())
+        INSERT INTO WORKSHEET (amount, work_date, machine_id, product_id, worker_id, create_datetime)
+        VALUES (#{amount}, #{workDate}, #{machineId}, #{productId}, #{workerId}, NOW())
     </insert>
 
     <update id="updateWorksheet" parameterType="org.example.back.model.Worksheet">
         UPDATE WORKSHEET
         SET amount = #{amount},
+            work_date = #{workDate},
             machine_id = #{machineId},
             product_id = #{productId},
             worker_id = #{workerId}
