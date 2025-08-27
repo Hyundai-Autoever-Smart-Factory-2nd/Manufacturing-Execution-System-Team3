@@ -6,7 +6,8 @@ const worksheet = ref({
   amount: null,
   machineId: null,
   productId: null,
-  workerId: null
+  workerId: null,
+  workDate: null,
 })
 const URL = '/api/worksheet';
 const machineURL = '/api/machine';
@@ -138,7 +139,7 @@ const changeWorker = (event) => {
   worksheet.value.workerId = event.target.value;
 };
 
-const columns = ['지시수량', '설비명', '품목명', '작업자명'];
+const columns = ['지시일자', '설비명', '품목명', '작업자명','지시수량'];
 dataFetch();
 machineFetch();
 workFetch();
@@ -170,9 +171,9 @@ productFetch();
   <h1>작업지시서 등록</h1>
   <div class="worksheet">
     <form @submit.prevent="submitForm" class="form">
-      <div class="form-group">
-        <label>생산량:</label>
-        <input type="number" v-model="worksheet.amount" required>
+        <label>지시일자</label>
+          <input type="date" v-model="worksheet.workDate"/>
+        <div class="form-group">
         <label>기계 ID:</label>
         <!-- <input type="number" v-model="worksheet.machineId" required> -->
          <select class="select-box" name="machineId" v-model="worksheet.machineId" v-on:change="changeMachine" required>
@@ -188,6 +189,8 @@ productFetch();
          <select class="select-box" name="workerId" v-model="worksheet.workerId" v-on:change="changeWorker" required>
             <option v-for="worker in workers" :value="worker.workerId">{{ worker.workerName }}</option>
         </select>
+        <label>생산량:</label>
+        <input type="number" v-model="worksheet.amount" required>
       </div>
 
       <button class="button button--primary" type="submit">등록</button>
@@ -204,10 +207,11 @@ productFetch();
       </thead>
       <tbody>
         <tr v-for="row in pagedRows" :key="row.worksheetId">
-          <td>{{ row.amount }}</td>
+          <td>{{ row.workDate }}</td>
           <td>{{ row.machineName }}</td>
           <td>{{ row.productName }}</td>
           <td>{{ row.workerName }}</td>
+          <td>{{ row.amount }}</td>
         </tr>
       </tbody>
     </table>
@@ -249,6 +253,7 @@ productFetch();
 }
 
 .select-box {
+  width: 100px;
   background-color: white;
   border: 1px solid #ddd;
 }
@@ -260,7 +265,7 @@ label {
 }
 
 input {
-  width: 100px;
+  width: 150px;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
