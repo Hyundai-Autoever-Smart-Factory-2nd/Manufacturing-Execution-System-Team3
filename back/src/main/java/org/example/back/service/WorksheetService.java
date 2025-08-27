@@ -18,4 +18,5 @@ public class WorksheetService {
     public WorksheetWithAllResponse findByMachineId(Long id) { return worksheetMapper.findByMachineId(id); }
     public void insertWorksheet(Worksheet worksheet) { worksheetMapper.insertWorksheet(worksheet); }
     public void updateWorksheet(Worksheet worksheet) { worksheetMapper.updateWorksheet(worksheet); }
+    public void deleteWorksheet(Long id) { worksheetMapper.deleteWorksheet(id); }
 }

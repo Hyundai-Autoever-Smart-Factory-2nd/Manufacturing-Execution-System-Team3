@@ -53,4 +53,8 @@
             worker_id = #{workerId}
         WHERE worksheet_id = #{worksheetId}
     </update>
+
+    <delete id="deleteWorksheet" parameterType="Long">
+        DELETE FROM WORKSHEET WHERE worksheet_id = #{worksheetId}
+    </delete>
 </mapper>

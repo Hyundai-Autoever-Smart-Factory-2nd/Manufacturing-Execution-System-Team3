@@ -12,4 +12,5 @@ public interface WorksheetMapper {
     public WorksheetWithAllResponse findByMachineId(Long id);
     public void insertWorksheet(Worksheet worksheet);
     public void updateWorksheet(Worksheet worksheet);
+    public void deleteWorksheet(Long id);
 }

@@ -38,4 +38,10 @@ public class WorksheetController {
             @PathVariable Long id) {
         return worksheetService.findByMachineId(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteWorksheet(
+            @PathVariable Long id) {
+        worksheetService.deleteWorksheet(id);
+    }
 }
