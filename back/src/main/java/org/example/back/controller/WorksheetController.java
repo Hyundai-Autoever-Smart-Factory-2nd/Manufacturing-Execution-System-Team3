@@ -1,5 +1,6 @@
 package org.example.back.controller;
 
+import org.example.back.dto.CreateWorksheetRequest;
 import org.example.back.dto.WorksheetWithAllResponse;
 import org.example.back.model.Worksheet;
 import org.example.back.service.WorksheetService;
@@ -20,8 +21,8 @@ public class WorksheetController {
     @PostMapping("")
     public void createWorksheet(
             @RequestBody
-            Worksheet worksheet) {
-        worksheetService.insertWorksheet(worksheet);
+            CreateWorksheetRequest request) {
+        worksheetService.insertWorksheet(request);
     }
 
     @PutMapping("/{id}")
