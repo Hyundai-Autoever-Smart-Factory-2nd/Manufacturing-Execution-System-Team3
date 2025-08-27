@@ -1,6 +1,7 @@
 package org.example.back.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.example.back.dto.CreateWorksheetRequest;
 import org.example.back.dto.WorksheetWithAllResponse;
 import org.example.back.model.Worksheet;
 
@@ -13,4 +14,5 @@ public interface WorksheetMapper {
     public void insertWorksheet(Worksheet worksheet);
     public void updateWorksheet(Worksheet worksheet);
     public void deleteWorksheet(Long id);
+    public boolean existsByWorkDateAndMachineId(CreateWorksheetRequest createWorksheetRequest);
 }

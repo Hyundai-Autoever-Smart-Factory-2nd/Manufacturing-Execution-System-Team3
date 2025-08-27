@@ -38,6 +38,12 @@
         WHERE w.machine_id = #{machineId}
     </select>
 
+    <select id="existsByWorkDateAndMachineId" parameterType="org.example.back.dto.CreateWorksheetRequest" resultType="boolean">
+        SELECT COUNT(*) > 0
+        FROM WORKSHEET
+        WHERE work_date = #{workDate} AND machine_id = #{machineId}
+    </select>
+
     <insert id="insertWorksheet" parameterType="org.example.back.model.Worksheet">
         INSERT INTO WORKSHEET (amount, work_date, machine_id, product_id, worker_id, create_datetime)
         VALUES (#{amount}, #{workDate}, #{machineId}, #{productId}, #{workerId}, NOW())
