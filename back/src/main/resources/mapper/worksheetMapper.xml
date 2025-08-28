@@ -35,7 +35,7 @@
             create_datetime
         FROM WORKSHEET w
         JOIN MACHINE m ON m.machine_id = w.machine_id
-        WHERE w.machine_id = #{machineId}
+        WHERE w.machine_id = #{machineId} AND work_date = CURDATE()
     </select>
 
     <select id="existsByWorkDateAndMachineId" parameterType="org.example.back.dto.CreateWorksheetRequest" resultType="boolean">
