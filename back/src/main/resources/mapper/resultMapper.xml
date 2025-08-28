@@ -12,6 +12,7 @@
             complete_datetime
         FROM RESULT
         WHERE worksheet_id = #{worksheetId}
+        ORDER BY complete_datetime DESC
     </select>
 
     <select id="existsByWorksheetId" parameterType="Long" resultType="boolean">
