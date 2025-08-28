@@ -5,6 +5,7 @@ import org.example.back.dto.WorksheetWithAllResponse;
 import org.example.back.model.Worksheet;
 import org.example.back.service.WorksheetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,8 +42,9 @@ public class WorksheetController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteWorksheet(
+    public ResponseEntity<Void> deleteWorksheet(
             @PathVariable Long id) {
         worksheetService.deleteWorksheet(id);
+        return ResponseEntity.noContent().build();
     }
 }

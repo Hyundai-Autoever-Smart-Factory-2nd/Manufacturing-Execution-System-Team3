@@ -2,6 +2,7 @@ package org.example.back.service;
 
 import org.example.back.dto.CreateWorksheetRequest;
 import org.example.back.dto.WorksheetWithAllResponse;
+import org.example.back.mapper.ResultMapper;
 import org.example.back.mapper.WorksheetMapper;
 import org.example.back.model.Worksheet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class WorksheetService {
 
     @Autowired
     WorksheetMapper worksheetMapper;
+    @Autowired
+    ResultMapper resultMapper;
 
     public List<WorksheetWithAllResponse> findAll() { return worksheetMapper.findAll(); }
     public WorksheetWithAllResponse findByMachineId(Long id) {
@@ -37,5 +40,10 @@ public class WorksheetService {
         worksheetMapper.insertWorksheet(worksheet);
     }
     public void updateWorksheet(Worksheet worksheet) { worksheetMapper.updateWorksheet(worksheet); }
-    public void deleteWorksheet(Long id) { worksheetMapper.deleteWorksheet(id); }
+    public void deleteWorksheet(Long id) {
+        if (resultMapper.existsByWorksheetId(id)) {
+            throw new IllegalArgumentException("이미 진행중인 작업입니다. 삭제할 수 없습니다.");
+        }
+        worksheetMapper.deleteWorksheet(id);
+    }
 }
