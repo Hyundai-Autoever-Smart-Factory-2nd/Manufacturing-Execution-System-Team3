@@ -14,6 +14,31 @@ const machineURL = '/api/machine';
 const workerURL = '/api/worker';
 const productURL = '/api/product';
 
+const selectedRowId = ref();
+
+//작업지시 삭제
+const delWorkSheet = async() => {
+  try {
+    const response = await fetch(URL+`/${selectedRowId.value}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json", // JSON 전송
+      },
+      // credentials: "include", // 쿠키 인증 필요 시
+    });
+  
+    if (!response.ok) {
+      const jsonData = await response.json();
+      console.log(jsonData.message)
+      throw new Error(jsonData.message);
+    }
+    alert('삭제 완료!')
+    dataFetch();
+  } catch (error) {
+    alert("삭제 실패: "+ error.message);
+    dataFetch();
+  }
+}
 
 // 작업지시 등록
 const submitForm = async () => {
@@ -26,15 +51,16 @@ const submitForm = async () => {
       // credentials: "include", // 쿠키 인증 필요 시
       body: JSON.stringify(worksheet.value), // ref 값 직렬화
     });
-
+   
     if (!response.ok) {
-      throw new Error("서버 오류: " + response.status);
+      const jsonData = await response.json();
+      throw new Error(jsonData.message);
     }
-    // const jsonData = await response.json();
-    // console.log("등록 성공:", jsonData);
+    alert("등록 완료!")
     dataFetch();
   } catch (error) {
-    console.error("등록 실패:", error);
+
+    alert("등록 실패: "+ error.message);
     dataFetch();
   }
 };
@@ -194,7 +220,7 @@ productFetch();
       </div>
 
       <button class="button button--primary" type="submit">등록</button>
-      <button class="button button--red" @click="del">삭제</button>
+      <button class="button button--red" @click="delWorkSheet()">삭제</button>
     </form>
   </div>
 
@@ -202,11 +228,20 @@ productFetch();
     <table>
       <thead>
         <tr>
+          <th style="width: 10px;">선택</th>
           <th v-for="col in columns" :key="col">{{ col }}</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="row in pagedRows" :key="row.worksheetId">
+          <td style="width:10px;">
+            <input
+              type="radio"
+              name="rowSelect"
+              :value="row.worksheetId"
+              v-model="selectedRowId"
+            />
+          </td>
           <td>{{ row.workDate }}</td>
           <td>{{ row.machineName }}</td>
           <td>{{ row.productName }}</td>

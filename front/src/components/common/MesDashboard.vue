@@ -59,6 +59,34 @@
 
 <script setup>
 /* 추후 API 연동 시 fetch/axios로 데이터 가져오면 됨 */
+import { useRoute } from "vue-router";
+import { ref } from 'vue';
+const route = useRoute();
+const machineId = route.params.machineId; // "123"
+
+const URL = '/api/worksheet';
+const worksheet = ref([]);
+
+const worksheetFetch = async () => {
+  try {
+    const response = await fetch(URL + `/${machineId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const jsonData = await response.json();
+    if (!response.ok) {
+      throw new Error("서버 오류: " + jsonData.message);
+    }
+    
+    worksheet.value = jsonData;
+    console.log("조회 성공:", worksheet.value);
+  } catch (error) {
+    console.error("조회 실패:", error);
+  }
+};
+worksheetFetch();
 </script>
 
 <style scoped>
