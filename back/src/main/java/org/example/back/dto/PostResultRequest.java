@@ -1,9 +1,8 @@
-package org.example.back.model;
+package org.example.back.dto;
 
-public class Result {
+public class PostResultRequest {
     private Long worksheetId;
     private Boolean isPassed;
-    private String completeDatetime;
 
     public Long getWorksheetId() {
         return worksheetId;
@@ -19,13 +18,5 @@ public class Result {
 
     public void setPassed(Boolean passed) {
         isPassed = passed;
-    }
-
-    public String getCompleteDatetime() {
-        return completeDatetime;
-    }
-
-    public void setCompleteDatetime(String completeDatetime) {
-        this.completeDatetime = completeDatetime;
     }
 }
