@@ -33,10 +33,6 @@ CREATE TABLE `WORKSHEET` (
 
 CREATE TABLE `RESULT` (
     `worksheet_id` BIGINT NOT NULL,
-    `pass_qty` INT NULL,
-    `fail_qty` INT NULL,
-    `complete_datetime` DATETIME NULL,
-    CONSTRAINT `PK_RESULT` PRIMARY KEY (`worksheet_id`),
-    CONSTRAINT `FK_WORKSHEET_TO_RESULT_1` FOREIGN KEY (`worksheet_id`)
-        REFERENCES `WORKSHEET` (`worksheet_id`)
+    `is_passed` BOOL NULL,
+    `complete_datetime` DATETIME NULL
 );

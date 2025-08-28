@@ -30,9 +30,14 @@ INSERT INTO WORKSHEET (amount, work_date, create_datetime, machine_id, product_i
 (45,  '2025-08-27', '2025-08-26 09:30:00', 4, 2, 2); -- 조립: 차체, 김철수
 
 -- RESULT 작업 실적
-INSERT INTO RESULT (worksheet_id, pass_qty, fail_qty, complete_datetime) VALUES
-(1, 98, 2, '2025-08-26'),
-(2, 78, 2, '2025-08-26'),
-(3, 49, 1, '2025-08-27'),
-(4, 68, 2, '2025-08-28');
--- (5, 6)은 아직 결과 없음
+INSERT INTO RESULT (worksheet_id, is_passed, complete_datetime) VALUES
+(1, FALSE,  NOW()),
+(2, FALSE,  NOW()),
+(2, TRUE,  NOW()),
+(3, FALSE,  NOW()),
+(3, TRUE,  NOW()),
+(3, TRUE,  NOW()),
+(4, FALSE,  NOW()),
+(4, TRUE,  NOW()),
+(4, TRUE,  NOW()),
+(4, TRUE,  NOW());
