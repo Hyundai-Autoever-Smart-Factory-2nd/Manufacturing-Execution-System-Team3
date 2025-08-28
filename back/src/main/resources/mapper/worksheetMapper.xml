@@ -30,11 +30,15 @@
             work_date,
             w.machine_id,
             machine_name,
-            product_id,
-            worker_id,
+            w.product_id,
+            product_name,
+            w.worker_id,
+            worker_name,
             create_datetime
         FROM WORKSHEET w
         JOIN MACHINE m ON m.machine_id = w.machine_id
+        JOIN PRODUCT p ON p.product_id = w.product_id
+        JOIN WORKER  wk ON wk.worker_id = w.worker_id
         WHERE w.machine_id = #{machineId} AND work_date = CURDATE()
     </select>
 
