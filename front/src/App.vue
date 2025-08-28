@@ -1,109 +1,85 @@
 <script setup>
-import { ref } from 'vue'
-import WorkOrderStats from '@/components/WorkOrderStats.vue'
-import WorkOrderList from '@/components/WorkOrderList.vue'
-import CreateWorkOrderDialog from '@/components/CreateWorkOrderDialog.vue'
-import { Factory, Plus, ClipboardList, TrendingUp } from 'lucide-vue-next'
-
-// Role-based access control could be handled through a composable
-const userHasAccess = ref(true) // Replace with actual auth logic
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <div v-if="userHasAccess" class="flex min-h-screen">
-    <main class="flex-1">
-      <div class="min-h-screen bg-background">
-        <!-- Header -->
-        <header class="border-b bg-card">
-          <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <Factory class="h-8 w-8 text-primary" />
-                <div>
-                  <h1 class="text-2xl font-bold text-foreground">Automotive MES</h1>
-                  <p class="text-sm text-muted-foreground">Manufacturing Execution System</p>
-                </div>
-              </div>
-              <CreateWorkOrderDialog>
-                <button class="btn gap-2">
-                  <Plus class="h-4 w-4" />
-                  New Work Order
-                </button>
-              </CreateWorkOrderDialog>
-            </div>
-          </div>
-        </header>
+  <header>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-        <!-- Main Content -->
-        <div class="container mx-auto px-4 py-6 space-y-6">
-          <!-- Stats Overview -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Suspense>
-              <template #default>
-                <WorkOrderStats />
-              </template>
-              <template #fallback>
-                <StatsCardSkeleton />
-              </template>
-            </Suspense>
-          </div>
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
 
-          <!-- Work Orders Section -->
-          <div class="card">
-            <div class="card-header">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <ClipboardList class="h-5 w-5 text-primary" />
-                  <h3 class="card-title">Work Orders</h3>
-                </div>
-                <div class="flex items-center gap-2 text-sm text-muted-foreground">
-                  <TrendingUp class="h-4 w-4" />
-                  Real-time Production Status
-                </div>
-              </div>
-            </div>
-            <div class="card-content">
-              <Suspense>
-                <template #default>
-                  <WorkOrderList />
-                </template>
-                <template #fallback>
-                  <WorkOrderListSkeleton />
-                </template>
-              </Suspense>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div>
+  </header>
+
+  <RouterView />
 </template>
 
-<script>
-// Skeleton components
-const StatsCardSkeleton = {
-  template: `
-    <div class="card">
-      <div class="card-header pb-2">
-        <div class="h-4 bg-muted rounded animate-pulse" />
-      </div>
-      <div class="card-content">
-        <div class="h-8 bg-muted rounded animate-pulse mb-2" />
-        <div class="h-3 bg-muted rounded animate-pulse w-2/3" />
-      </div>
-    </div>
-  `
-}
-
-const WorkOrderListSkeleton = {
-  template: `
-    <div class="space-y-3">
-      <div v-for="i in 5" :key="i" class="h-16 bg-muted rounded animate-pulse" />
-    </div>
-  `
-}
-</script>
-
 <style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
 
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+nav {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+nav a.router-link-exact-active {
+  color: var(--color-text);
+}
+
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
+}
+
+nav a:first-of-type {
+  border: 0;
+}
+
+@media (min-width: 1024px) {
+  header {
+    display: flex;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
+
+  .logo {
+    margin: 0 2rem 0 0;
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  nav {
+    text-align: left;
+    margin-left: -1rem;
+    font-size: 1rem;
+
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
+}
 </style>
