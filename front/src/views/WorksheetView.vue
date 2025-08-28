@@ -240,6 +240,11 @@ productFetch();
   margin: 1em 3em;
 }
 
+/* body {
+  color: light-dark(black, white);
+  background-color: light-dark(white, black);
+} */
+
 
 .form {
   display: flex;
@@ -254,8 +259,14 @@ productFetch();
 
 .select-box {
   width: 100px;
-  background-color: white;
+  /* color: light-dark(black, white);
+  background-color: light-dark(white, black); */
   border: 1px solid #ddd;
+}
+
+option {
+  color: light-dark(black, white);
+  background-color: light-dark(white, black);
 }
 
 
@@ -321,7 +332,7 @@ th, td {
 }
 
 th {
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   text-align: left;
 }
 

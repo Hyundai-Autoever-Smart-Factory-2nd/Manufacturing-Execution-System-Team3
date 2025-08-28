@@ -22,7 +22,7 @@ import { RouterLink } from 'vue-router'
 <style scoped>
 .side-navigation {
   width: 250px;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   height: 100%;
   padding: 1rem;
 }
@@ -32,7 +32,7 @@ import { RouterLink } from 'vue-router'
   align-items: center;
   padding: 0.75rem 1rem;
   text-decoration: none;
-  color: #2c3e50;
+  /* color: #2c3e50; */
   margin-bottom: 0.5rem;
   border-radius: 4px;
   gap: 0.5rem;
