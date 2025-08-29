@@ -139,7 +139,7 @@ onMounted(() => {
         position: 'right',
         formatter: msg.sensor_value + '%'
       }
-    }else {
+    } else {
       charts[msg.name].xAxis.data.push(time)
       charts[msg.name].series[0].data.push(msg.sensor_value)
       if (charts[msg.name].xAxis.data.length > 20) {
