@@ -74,10 +74,8 @@ const machineFetch = async () => {
     }
     const jsonData = await response.json();
     machines.value = jsonData.sort((a, b) => a.machineId - b.machineId);
-    // 모든 머신 상태 순서대로 가져오기
-    for (const machine of machines.value) {
-      await getStatus(machine.machineId);
-    }
+    // 모든 머신 상태를 동시에 가져오기
+    await Promise.all(machines.value.map(machine => getStatus(machine.machineId)));
     console.log("조회 성공:", machines.value);
   } catch (error) {
     console.error("조회 실패:", error);
