@@ -16,8 +16,11 @@ Windows 환경에서 localhost 기준으로 실행합니다.
 | Python | 3.10 이상 | [다운로드](https://www.python.org/downloads/windows/) |
 | pip | 최신 | Python 패키지 설치 |
 | Git | 최신 (선택) | [다운로드](https://git-scm.com/) |
-| Docker | 최신 (선택) | Kafka/MySQL Docker 환경 사용 시 |
+| Docker | 최신 | [다운로드](https://www.docker.com/) |
 
 💡 Windows PowerShell에서 권한 설정:
 ```powershell
+git clone https://github.com/Hyundai-Autoever-Smart-Factory-2nd/Manufacturing-Execution-System-Team3.git
+cd Manufacturing-Execution-System-Team3
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\start_all.ps1
