@@ -21,9 +21,9 @@
           @click="goMes(m.machineId)"
         >
           <div class="machine-header">
-            <!-- <div class="machine-icon"> -->
-              <!-- <i class="icon-machine"></i> -->
-            <!-- </div> -->
+            <!-- <div class="machine-icon">
+              <i class="icon-machine"></i>
+            </div> -->
             <div class="machine-status">
               <span class="status-dot" :class="getStatusClass(m.machineId)"></span>
             </div>
@@ -74,37 +74,36 @@ const machineFetch = async () => {
     }
     const jsonData = await response.json();
     machines.value = jsonData.sort((a, b) => a.machineId - b.machineId);
+    // 모든 머신 상태를 동시에 가져오기
+    await Promise.all(machines.value.map(machine => getStatus(machine.machineId)));
     console.log("조회 성공:", machines.value);
   } catch (error) {
     console.error("조회 실패:", error);
   }
 };
-
-// 머신 상태 시뮬레이션
-const getStatusClass = async (machineId) => {
-  const status = 'online';
+const statuses = ref({});
+const getStatus = async (machineId) => {
+  let status = "online"; // 기본값
   try {
     const response = await fetch(URL + `/${machineId}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json", // JSON 전송
-      },
-      // credentials: "include", // 쿠키 인증 필요 시
+      headers: { "Content-Type": "application/json" },
     });
 
-    if (!response.ok) {
-      status = 'offline';
-      throw new Error("서버 오류: " + response.status);
-    }
-    // const jsonData = await response.json();
-    // console.log("조회 성공:", jsonData);
+    if (!response.ok) status = "offline";
   } catch (error) {
-    status = 'offline';
+    status = "offline";
   }
+  statuses.value[machineId] = status; // 객체에 저장
+  console.log(statuses.value)
   return status;
 };
-
-
+// // 머신 상태 시뮬레이션
+const getStatusClass = (machineId) => {
+  const status = statuses.value[machineId]; // 객체에서 machineId로 상태 가져오기
+  // 상태 값이 없으면 offline으로 표시
+  return status;
+};
 
 // 가동 시간 시뮬레이션
 // const getUptime = (machineId) => {

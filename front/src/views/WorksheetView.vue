@@ -9,12 +9,22 @@ const worksheet = ref({
   workerId: null,
   workDate: null,
 })
+
+const initialWorksheet = ref({
+  amount: null,
+  machineId: null,
+  productId: null,
+  workerId: null,
+  workDate: null,
+})
 const URL = '/api/worksheet';
 const machineURL = '/api/machine';
 const workerURL = '/api/worker';
 const productURL = '/api/product';
 
 const selectedRowId = ref();
+
+
 
 //작업지시 삭제
 const delWorkSheet = async() => {
@@ -57,6 +67,7 @@ const submitForm = async () => {
       throw new Error(jsonData.message);
     }
     alert("등록 완료!")
+    worksheet.value = { ...initialWorksheet.value };
     dataFetch();
   } catch (error) {
 
