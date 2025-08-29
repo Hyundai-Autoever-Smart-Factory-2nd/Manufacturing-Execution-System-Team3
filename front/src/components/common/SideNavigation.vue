@@ -8,6 +8,10 @@ import { RouterLink } from 'vue-router'
       <i class="fas fa-home"></i>
       홈
     </RouterLink>
+    <RouterLink to="/three" class="nav-item">
+      <i class="fas fa-info-circle"></i>
+      3D
+    </RouterLink>
     <RouterLink to="/worksheet" class="nav-item">
       <i class="fas fa-file-alt"></i>
       작업지시서
