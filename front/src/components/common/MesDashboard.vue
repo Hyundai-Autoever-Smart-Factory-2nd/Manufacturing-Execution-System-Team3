@@ -145,7 +145,7 @@ const pass = async () => {
       headers: {
         "Content-Type": "application/json", // JSON 전송
       },
-      // credentials: "include", // 쿠키 인증 필요 시ek
+      // credentials: "include", // 쿠키 인증 필요 시
       body: JSON.stringify(result.value), // ref 값 직렬화
     });
     resultFetch();
