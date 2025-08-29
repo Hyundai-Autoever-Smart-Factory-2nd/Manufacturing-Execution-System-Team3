@@ -109,7 +109,7 @@
           }"
         >
           <span v-if="rs.passed === true">✅정상</span>
-          <span v-else="rs.passed === false">⚠️불량</span>
+          <span v-else>⚠️불량</span>
           <br />
           <small class="text-gray-500">{{ rs.completeDatetime }}</small>
         </li>
