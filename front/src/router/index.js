@@ -16,6 +16,12 @@ const router = createRouter({
       component: () => import('../views/WorksheetView.vue'),
     },
     {
+      path: '/three',
+      name: 'three',
+
+      component: () => import('../views/ThreedView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
