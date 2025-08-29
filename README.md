@@ -18,9 +18,11 @@ Windows 환경에서 localhost 기준으로 실행합니다.
 | Git | 최신 (선택) | [다운로드](https://git-scm.com/) |
 | Docker | 최신 | [다운로드](https://www.docker.com/) |
 
-💡 Windows PowerShell에서 권한 설정:
+## Installation
+### Window
 ```powershell
 git clone https://github.com/Hyundai-Autoever-Smart-Factory-2nd/Manufacturing-Execution-System-Team3.git
 cd Manufacturing-Execution-System-Team3
+```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\start_all.ps1
