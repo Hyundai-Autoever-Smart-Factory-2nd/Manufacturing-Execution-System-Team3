@@ -1,9 +1,9 @@
 -- MACHINE 설비
-INSERT INTO MACHINE (machine_name) VALUES
-('프레스'),
-('용접'),
-('도장'),
-('조립');
+INSERT INTO MACHINE (machine_name, type) VALUES
+('프레스', 1),
+('용접', 2),
+('도장', 3),
+('조립', 4);
 
 -- PRODUCT 제품
 INSERT INTO PRODUCT (product_name) VALUES
