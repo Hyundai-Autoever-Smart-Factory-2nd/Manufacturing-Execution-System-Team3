@@ -74,8 +74,8 @@ onMounted(() => {
   // === 1. 프레스 공정 ===
   const pressFrame = new THREE.Mesh(
     new THREE.BoxGeometry(4, 6, 3),
-    new THREE.MeshStandardMaterial({ color: 0x495057,
-         color: 0xffffff,   // 흰색
+    new THREE.MeshStandardMaterial({ 
+        color: 0xffffff,   // 흰색
         transparent: true, // 투명 허용
         opacity: 0.2,      // 투명도 조절 (0~1)
         metalness: 0.3, roughness: 0.4 })
