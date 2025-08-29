@@ -23,6 +23,7 @@ Windows 환경에서 localhost 기준으로 실행합니다.
 ```powershell
 git clone https://github.com/Hyundai-Autoever-Smart-Factory-2nd/Manufacturing-Execution-System-Team3.git
 cd Manufacturing-Execution-System-Team3
+
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\start_all.ps1
