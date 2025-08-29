@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.back.mapper.ResultMapper">
+
+    <select id="findByWorksheetId" parameterType="Long" resultType="org.example.back.model.Result">
+        SELECT
+            worksheet_id,
+            is_passed,
+            complete_datetime
+        FROM RESULT
+        WHERE worksheet_id = #{worksheetId}
+        ORDER BY complete_datetime DESC
+    </select>
+
+    <select id="existsByWorksheetId" parameterType="Long" resultType="boolean">
+        SELECT COUNT(*) > 0
+        FROM RESULT
+        WHERE worksheet_id = #{worksheetId}
+    </select>
+
+    <insert id="insertResult" parameterType="org.example.back.model.Result">
+    INSERT INTO RESULT (worksheet_id, is_passed, complete_datetime)
+    VALUES (#{worksheetId}, #{isPassed}, NOW())
+    </insert>
+</mapper>
