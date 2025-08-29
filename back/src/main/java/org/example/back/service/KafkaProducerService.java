@@ -17,7 +17,7 @@ public class KafkaProducerService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    @Scheduled(fixedRate = 2000) // 2초마다 메시지 발행
+    @Scheduled(fixedRate = 20) // 2초마다 메시지 발행
     public void sendRandomData() {
         int value = random.nextInt(100);
         kafkaTemplate.send("random-topic", String.valueOf(value));
