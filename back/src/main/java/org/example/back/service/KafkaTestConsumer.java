@@ -12,7 +12,7 @@ public class KafkaTestConsumer {
         this.sseController = sseController;
     }
 
-    @KafkaListener(topics = "random-topic", groupId = "random-group")
+    @KafkaListener(topics = "machine-sensor", groupId = "random-group")
     public void listen(String message) {
         System.out.println("Consumed message: " + message);
         sseController.sendToClients(message); // SSE로 전송

@@ -5,6 +5,7 @@ USE mydatabase;
 CREATE TABLE `MACHINE` (
     `machine_id` BIGINT NOT NULL AUTO_INCREMENT,
     `machine_name` VARCHAR(60) NULL,
+    `type` BIGINT NOT NULL,
     CONSTRAINT `PK_MACHINE` PRIMARY KEY (`machine_id`)
 );
 
