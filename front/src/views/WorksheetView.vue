@@ -67,7 +67,7 @@ const submitForm = async () => {
       throw new Error(jsonData.message);
     }
     alert("등록 완료!")
-    worksheet.value = { ...initialWorksheet };
+    worksheet.value = { ...initialWorksheet.value };
     dataFetch();
   } catch (error) {
 
